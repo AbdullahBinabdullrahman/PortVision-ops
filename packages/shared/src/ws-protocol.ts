@@ -28,9 +28,14 @@ export interface WsEnvelope<T = unknown> {
   requestId?: string;
 }
 
+interface WsBase {
+  ts?: number;
+  requestId?: string;
+}
+
 /* ----------- Headset → Server ----------- */
 
-export interface HeadsetTelemetryMsg {
+export interface HeadsetTelemetryMsg extends WsBase {
   type: "headset.telemetry";
   payload: {
     headsetId: ID;
@@ -41,14 +46,14 @@ export interface HeadsetTelemetryMsg {
   };
 }
 
-export interface ContainerIdentifyMsg {
+export interface ContainerIdentifyMsg extends WsBase {
   type: "container.identify";
   payload:
     | { mode: "ble"; bleBeaconId: string }
     | { mode: "vision"; isoCode: string };
 }
 
-export interface ActionSubmitMsg {
+export interface ActionSubmitMsg extends WsBase {
   type: "action.submit";
   payload: {
     containerId: ID;
@@ -59,7 +64,7 @@ export interface ActionSubmitMsg {
 
 /* ----------- Server → Headset ----------- */
 
-export interface ContainerDataMsg {
+export interface ContainerDataMsg extends WsBase {
   type: "container.data";
   payload: {
     container: Container;
@@ -68,19 +73,19 @@ export interface ContainerDataMsg {
   };
 }
 
-export interface ActionAckMsg {
+export interface ActionAckMsg extends WsBase {
   type: "action.ack";
   payload: { action: Action };
 }
 
-export interface SensorAlertMsg {
+export interface SensorAlertMsg extends WsBase {
   type: "sensor.alert";
   payload: { alert: Alert; container: Container };
 }
 
 /* ----------- Server → Dashboard ----------- */
 
-export interface HeadsetStatusMsg {
+export interface HeadsetStatusMsg extends WsBase {
   type: "headset.status";
   payload: {
     headsetId: ID;
@@ -92,27 +97,27 @@ export interface HeadsetStatusMsg {
   };
 }
 
-export interface SensorUpdateMsg {
+export interface SensorUpdateMsg extends WsBase {
   type: "sensor.update";
   payload: { reading: SensorReading };
 }
 
-export interface ActionCreatedMsg {
+export interface ActionCreatedMsg extends WsBase {
   type: "action.created";
   payload: { action: Action };
 }
 
-export interface AlertNewMsg {
+export interface AlertNewMsg extends WsBase {
   type: "alert.new";
   payload: { alert: Alert };
 }
 
-export interface AlertAcknowledgedMsg {
+export interface AlertAcknowledgedMsg extends WsBase {
   type: "alert.acknowledged";
   payload: { alert: Alert };
 }
 
-export interface HeadsetSnapshotMsg {
+export interface HeadsetSnapshotMsg extends WsBase {
   type: "headset.snapshot";
   payload: { headsets: Headset[] };
 }

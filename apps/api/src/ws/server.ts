@@ -102,7 +102,7 @@ export function attachWsServer(app: FastifyInstance): void {
     });
   });
 
-  wss.on("connection", (ws: WebSocket, _req, auth: { user: JwtPayload; role: WsRole }) => {
+  wss.on("connection", (ws: WebSocket, _req: IncomingMessage, auth: { user: JwtPayload; role: WsRole }) => {
     const client: WsClient = { socket: ws, role: auth.role, user: auth.user };
 
     if (auth.role === "headset") {

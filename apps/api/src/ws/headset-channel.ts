@@ -1,4 +1,5 @@
 import type { FastifyBaseLogger } from "fastify";
+import { Prisma } from "@prisma/client";
 import type {
   AnyWsMessage,
   HeadsetToServerMsg,
@@ -123,7 +124,7 @@ export async function handleHeadsetMessage(
           operatorId: headset.operatorId,
           headsetId: headset.id,
           actionType: msg.payload.actionType,
-          payload: msg.payload.payload,
+          payload: msg.payload.payload as Prisma.InputJsonValue,
         },
       });
       const wire = { ...action, createdAt: action.createdAt.toISOString(), payload: action.payload as Record<string, unknown> };

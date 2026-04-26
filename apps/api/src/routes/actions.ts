@@ -1,4 +1,5 @@
 import type { FastifyInstance } from "fastify";
+import { Prisma } from "@prisma/client";
 import { z } from "zod";
 import { prisma } from "../db.js";
 import { requireAuth } from "../auth/middleware.js";
@@ -23,7 +24,10 @@ export async function actionRoutes(app: FastifyInstance): Promise<void> {
     const parsed = createBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: "invalid_body" });
     const action = await prisma.action.create({
-      data: parsed.data,
+      data: {
+        ...parsed.data,
+        payload: parsed.data.payload as Prisma.InputJsonValue,
+      },
       include: {
         operator: { select: { name: true } },
         container: { select: { isoCode: true } },
