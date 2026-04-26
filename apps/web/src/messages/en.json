@@ -1,0 +1,202 @@
+{
+  "brand": {
+    "name": "PORTVISION",
+    "shortTag": "v0.1 — OPERATIONS CENTER"
+  },
+  "nav": {
+    "overview": "Overview",
+    "liveMap": "Live Map",
+    "headsets": "Headsets",
+    "operators": "Operators",
+    "containers": "Containers",
+    "activity": "Activity",
+    "iot": "IoT & Sensors",
+    "alerts": "Alerts",
+    "analytics": "Analytics",
+    "signOut": "Sign out"
+  },
+  "common": {
+    "live": "live",
+    "offline": "offline",
+    "online": "online",
+    "charging": "charging",
+    "open": "open",
+    "acked": "acked",
+    "all": "all",
+    "stale": "stale",
+    "active": "active",
+    "inactive": "inactive",
+    "loading": "Loading…",
+    "never": "never",
+    "unassigned": "unassigned",
+    "dash": "—",
+    "connected": "connected",
+    "wsConnected": "WS connected",
+    "simMode": "SIM MODE",
+    "liveStatus": "LIVE",
+    "acknowledged": "acknowledged",
+    "acknowledge": "Acknowledge",
+    "wsLive": "live",
+    "wsOffline": "offline"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "palette": "Color palette",
+    "languages": {
+      "ar": "Arabic",
+      "en": "English"
+    },
+    "themes": {
+      "portDefault": "Port Default",
+      "midnight": "Midnight",
+      "desert": "Desert",
+      "emerald": "Emerald",
+      "light": "Light"
+    },
+    "openButton": "Settings"
+  },
+  "login": {
+    "headerTag": "Operations Center · Sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "devSeed": "dev seed: admin@portvision.local / portvision",
+    "loginFailed": "login_failed"
+  },
+  "overview": {
+    "tag": "01 — Overview",
+    "title": "Operations Center",
+    "subtitle": "Real-time view of headsets, IoT sensors, employee activity, and alerts across the port.",
+    "headsetsOnline": "Headsets Online",
+    "openAlerts": "Open Alerts",
+    "fiveGHeadsets": "5G Headsets",
+    "sensorThroughput": "Sensor Throughput (5m)",
+    "wsConnections": "{count} live WS connections",
+    "allClear": "All clear",
+    "unacknowledged": "Unacknowledged",
+    "avgRssi": "avg RSSI {value} dBm",
+    "noSignal": "no signal data",
+    "bleTracked": "{count} BLE beacons tracked"
+  },
+  "liveMap": {
+    "tag": "02 — Live Map",
+    "title": "Port Map",
+    "subtitle": "Container positions across the yard. Headset positions stream in via WebSocket.",
+    "mapBadge": "MapLibre · OpenStreetMap",
+    "totalPositioned": "{count} positioned containers",
+    "noPositions": "No containers with coordinates to display."
+  },
+  "headsets": {
+    "tag": "03 — Headsets",
+    "title": "AR Headsets",
+    "subtitle": "Active fleet, operator assignment, battery, and 5G/WiFi link health.",
+    "device": "Device",
+    "serial": "Serial",
+    "operator": "Operator",
+    "status": "Status",
+    "linkRssi": "Link / RSSI",
+    "lastSeen": "Last seen"
+  },
+  "operators": {
+    "tag": "04 — Operators",
+    "title": "Employees",
+    "subtitle": "Active port personnel and their assigned AR headsets.",
+    "name": "Name",
+    "role": "Role",
+    "language": "Language",
+    "headset": "Headset",
+    "actions": "Actions",
+    "status": "Status"
+  },
+  "containers": {
+    "tag": "05 — Containers",
+    "title": "Container Inventory",
+    "subtitle": "{total} containers tracked across the yard.",
+    "isoCode": "ISO Code",
+    "bleBeacon": "BLE Beacon",
+    "status": "Status",
+    "cargo": "Cargo",
+    "position": "Position",
+    "lastInspected": "Last inspected"
+  },
+  "activity": {
+    "tag": "06 — Activity",
+    "title": "Live Activity Feed",
+    "subtitle": "Every operator action, alert, and headset state change as it happens.",
+    "feedTitle": "Live Activity",
+    "feedSubtitle": "Streaming via WebSocket",
+    "waiting": "Waiting for activity… run",
+    "kindAction": "action",
+    "kindAlert": "alert",
+    "kindHeadset": "headset",
+    "headsetStatus": "Headset {status}"
+  },
+  "iot": {
+    "tag": "07 — IoT",
+    "title": "Sensors, BLE & Communication",
+    "subtitle": "Zigbee mesh, BLE beacons, MQTT broker, and Zigbee2MQTT bridge health.",
+    "sensorMix": "Sensor mix (recent)",
+    "readingsCount": "{count} readings",
+    "bleInventoryTitle": "BLE beacon inventory",
+    "bleInventorySubtitle": "One beacon per container — primary identification path"
+  },
+  "alerts": {
+    "tag": "08 — Alerts",
+    "title": "Alerts",
+    "subtitle": "Sensor threshold breaches and operator-flagged issues.",
+    "filterOpen": "open",
+    "filterAcked": "acked",
+    "filterAll": "all",
+    "noAlerts": "No alerts to show."
+  },
+  "analytics": {
+    "tag": "09 — Analytics",
+    "title": "Operations Analytics",
+    "subtitle": "Throughput, alert volume, and sensor mix over the recent window.",
+    "actionsPerHour": "Actions per hour",
+    "last24h": "Last 24h",
+    "totalActions": "Total: {count} actions in the recent window",
+    "alertsCardTitle": "Alerts",
+    "alertsCardSubtitle": "Open vs acknowledged",
+    "alertsOpen": "open",
+    "alertsAck": "acknowledged",
+    "sensorReadingMix": "Sensor reading mix",
+    "samples": "{count} samples across all containers"
+  },
+  "feed": {
+    "title": "Live Activity",
+    "subtitle": "Streaming via WebSocket"
+  },
+  "connectivity": {
+    "title": "Communication",
+    "subtitle": "Edge → Headsets → Sensors",
+    "api": "API",
+    "postgres": "Postgres",
+    "mqtt": "MQTT",
+    "zigbee2mqtt": "Zigbee2MQTT",
+    "wsHeadsets": "WS Headsets",
+    "wsDashboards": "WS Dashboards",
+    "uptimeSeconds": "{seconds}s uptime",
+    "ok": "ok",
+    "down": "down",
+    "stub": "stub",
+    "idle": "idle",
+    "connectedCount": "{count} connected"
+  },
+  "sensors": {
+    "title": "IoT & Sensors",
+    "subtitle": "Per-container BLE/Zigbee health",
+    "summary": "{online}/{total} online · {beacons} BLE beacons",
+    "ble": "BLE",
+    "lastReading": "last: {type} · {time}",
+    "ingestedRecent": "{count} readings ingested in the recent window."
+  },
+  "stat": {
+    "headsetsOnline": "Headsets Online",
+    "openAlerts": "Open Alerts",
+    "fiveGHeadsets": "5G Headsets",
+    "sensorThroughput": "Sensor Throughput (5m)"
+  }
+}

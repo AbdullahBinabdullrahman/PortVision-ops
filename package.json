@@ -1,0 +1,21 @@
+{
+  "name": "portvision-ops",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PortVision edge server (API) + Operations Center (web dashboard) + simulator",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter=!@portvision/sim run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "sim:start": "pnpm --filter @portvision/sim run start",
+    "db:up": "docker compose up -d postgres mosquitto",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @portvision/api run migrate:dev",
+    "db:seed": "pnpm --filter @portvision/api run seed",
+    "db:reset": "pnpm --filter @portvision/api run db:reset"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.26.1"
+}

@@ -1,0 +1,202 @@
+{
+  "brand": {
+    "name": "بورت فيجن",
+    "shortTag": "v0.1 — مركز العمليات"
+  },
+  "nav": {
+    "overview": "نظرة عامة",
+    "liveMap": "الخريطة الحية",
+    "headsets": "السماعات",
+    "operators": "المشغلون",
+    "containers": "الحاويات",
+    "activity": "النشاط",
+    "iot": "إنترنت الأشياء والمستشعرات",
+    "alerts": "التنبيهات",
+    "analytics": "التحليلات",
+    "signOut": "تسجيل الخروج"
+  },
+  "common": {
+    "live": "مباشر",
+    "offline": "غير متصل",
+    "online": "متصل",
+    "charging": "قيد الشحن",
+    "open": "مفتوح",
+    "acked": "تم الإقرار",
+    "all": "الكل",
+    "stale": "قديم",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "loading": "جارٍ التحميل…",
+    "never": "لم يحدث بعد",
+    "unassigned": "غير مُسند",
+    "dash": "—",
+    "connected": "متصل",
+    "wsConnected": "WS متصل",
+    "simMode": "وضع المحاكاة",
+    "liveStatus": "مباشر",
+    "acknowledged": "تم الإقرار",
+    "acknowledge": "إقرار",
+    "wsLive": "مباشر",
+    "wsOffline": "غير متصل"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "palette": "نظام الألوان",
+    "languages": {
+      "ar": "العربية",
+      "en": "الإنجليزية"
+    },
+    "themes": {
+      "portDefault": "المرفأ الافتراضي",
+      "midnight": "ليل عميق",
+      "desert": "صحراء",
+      "emerald": "زمرد",
+      "light": "فاتح"
+    },
+    "openButton": "الإعدادات"
+  },
+  "login": {
+    "headerTag": "مركز العمليات · تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "submit": "تسجيل الدخول",
+    "submitting": "جارٍ تسجيل الدخول…",
+    "devSeed": "بيانات التطوير: admin@portvision.local / portvision",
+    "loginFailed": "فشل تسجيل الدخول"
+  },
+  "overview": {
+    "tag": "01 — نظرة عامة",
+    "title": "مركز العمليات",
+    "subtitle": "عرض فوري للسماعات ومستشعرات إنترنت الأشياء ونشاط الموظفين والتنبيهات في الميناء.",
+    "headsetsOnline": "السماعات المتصلة",
+    "openAlerts": "التنبيهات المفتوحة",
+    "fiveGHeadsets": "سماعات 5G",
+    "sensorThroughput": "إنتاجية المستشعرات (٥ د)",
+    "wsConnections": "{count} اتصالات WS مباشرة",
+    "allClear": "كل شيء على ما يرام",
+    "unacknowledged": "غير مُقَر بها",
+    "avgRssi": "متوسط RSSI ‎{value}‎ dBm",
+    "noSignal": "لا توجد بيانات إشارة",
+    "bleTracked": "{count} منارات BLE مُتتبَّعة"
+  },
+  "liveMap": {
+    "tag": "02 — الخريطة الحية",
+    "title": "خريطة الميناء",
+    "subtitle": "مواقع الحاويات في الساحة. مواقع السماعات تُبَث عبر WebSocket.",
+    "mapBadge": "MapLibre · OpenStreetMap",
+    "totalPositioned": "{count} حاوية محددة الموقع",
+    "noPositions": "لا توجد حاويات بإحداثيات لعرضها."
+  },
+  "headsets": {
+    "tag": "03 — السماعات",
+    "title": "سماعات الواقع المعزز",
+    "subtitle": "الأسطول النشط، إسناد المشغلين، البطارية، وصحة اتصال 5G/WiFi.",
+    "device": "الجهاز",
+    "serial": "الرقم التسلسلي",
+    "operator": "المشغل",
+    "status": "الحالة",
+    "linkRssi": "الاتصال / RSSI",
+    "lastSeen": "آخر ظهور"
+  },
+  "operators": {
+    "tag": "04 — المشغلون",
+    "title": "الموظفون",
+    "subtitle": "موظفو الميناء النشطون والسماعات المسندة إليهم.",
+    "name": "الاسم",
+    "role": "الدور",
+    "language": "اللغة",
+    "headset": "السماعة",
+    "actions": "الإجراءات",
+    "status": "الحالة"
+  },
+  "containers": {
+    "tag": "05 — الحاويات",
+    "title": "مخزون الحاويات",
+    "subtitle": "{total} حاوية يتم تتبعها في الساحة.",
+    "isoCode": "رمز ISO",
+    "bleBeacon": "منارة BLE",
+    "status": "الحالة",
+    "cargo": "الشحنة",
+    "position": "الموقع",
+    "lastInspected": "آخر فحص"
+  },
+  "activity": {
+    "tag": "06 — النشاط",
+    "title": "تدفق النشاط الحي",
+    "subtitle": "كل إجراء للمشغل، تنبيه، وتغيُّر حالة سماعة لحظةً بلحظة.",
+    "feedTitle": "النشاط الحي",
+    "feedSubtitle": "البث عبر WebSocket",
+    "waiting": "في انتظار النشاط… شغّل",
+    "kindAction": "إجراء",
+    "kindAlert": "تنبيه",
+    "kindHeadset": "سماعة",
+    "headsetStatus": "حالة السماعة {status}"
+  },
+  "iot": {
+    "tag": "07 — إنترنت الأشياء",
+    "title": "المستشعرات وBLE والاتصال",
+    "subtitle": "صحة شبكة Zigbee ومنارات BLE ووسيط MQTT وجسر Zigbee2MQTT.",
+    "sensorMix": "مزيج المستشعرات (الأخير)",
+    "readingsCount": "{count} قراءة",
+    "bleInventoryTitle": "مخزون منارات BLE",
+    "bleInventorySubtitle": "منارة واحدة لكل حاوية — مسار التعريف الأساسي"
+  },
+  "alerts": {
+    "tag": "08 — التنبيهات",
+    "title": "التنبيهات",
+    "subtitle": "تجاوزات عتبات المستشعرات والمشاكل التي يبلغ عنها المشغلون.",
+    "filterOpen": "مفتوح",
+    "filterAcked": "مُقَر",
+    "filterAll": "الكل",
+    "noAlerts": "لا توجد تنبيهات للعرض."
+  },
+  "analytics": {
+    "tag": "09 — التحليلات",
+    "title": "تحليلات العمليات",
+    "subtitle": "الإنتاجية، حجم التنبيهات، ومزيج المستشعرات في النافذة الأخيرة.",
+    "actionsPerHour": "الإجراءات في الساعة",
+    "last24h": "آخر ٢٤ ساعة",
+    "totalActions": "الإجمالي: {count} إجراء في النافذة الأخيرة",
+    "alertsCardTitle": "التنبيهات",
+    "alertsCardSubtitle": "مفتوح مقابل مُقَر",
+    "alertsOpen": "مفتوح",
+    "alertsAck": "مُقَر",
+    "sensorReadingMix": "مزيج قراءات المستشعرات",
+    "samples": "{count} عينة عبر جميع الحاويات"
+  },
+  "feed": {
+    "title": "النشاط الحي",
+    "subtitle": "البث عبر WebSocket"
+  },
+  "connectivity": {
+    "title": "الاتصال",
+    "subtitle": "الحافة ← السماعات ← المستشعرات",
+    "api": "API",
+    "postgres": "Postgres",
+    "mqtt": "MQTT",
+    "zigbee2mqtt": "Zigbee2MQTT",
+    "wsHeadsets": "WS السماعات",
+    "wsDashboards": "WS لوحات التحكم",
+    "uptimeSeconds": "{seconds}ث وقت التشغيل",
+    "ok": "سليم",
+    "down": "معطل",
+    "stub": "تجريبي",
+    "idle": "خامل",
+    "connectedCount": "{count} متصل"
+  },
+  "sensors": {
+    "title": "إنترنت الأشياء والمستشعرات",
+    "subtitle": "صحة BLE/Zigbee لكل حاوية",
+    "summary": "{online}/{total} متصلة · {beacons} منارات BLE",
+    "ble": "BLE",
+    "lastReading": "الأخيرة: {type} · {time}",
+    "ingestedRecent": "{count} قراءة تم استيعابها في النافذة الأخيرة."
+  },
+  "stat": {
+    "headsetsOnline": "السماعات المتصلة",
+    "openAlerts": "التنبيهات المفتوحة",
+    "fiveGHeadsets": "سماعات 5G",
+    "sensorThroughput": "إنتاجية المستشعرات (٥ د)"
+  }
+}

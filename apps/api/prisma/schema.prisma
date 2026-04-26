@@ -1,0 +1,176 @@
+// PortVision database schema — mirrors index.html §06.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  admin
+  viewer
+}
+
+enum OperatorRole {
+  inspector
+  supervisor
+  crane_op
+}
+
+enum ContainerStatus {
+  empty
+  loaded
+  in_transit
+  inspection
+}
+
+enum SensorType {
+  temp
+  humidity
+  tilt
+  shock
+}
+
+enum HeadsetStatus {
+  online
+  offline
+  charging
+}
+
+enum ConnectivityLink {
+  five_g  @map("5g")
+  wifi
+  offline
+}
+
+enum ActionType {
+  inspect
+  flag
+  note
+  dispatch
+}
+
+enum AlertSeverity {
+  info
+  warn
+  critical
+}
+
+enum AuditAction {
+  insert
+  update
+  delete
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  role         UserRole @default(admin)
+  createdAt    DateTime @default(now())
+
+  acknowledgedAlerts Alert[]    @relation("AlertAck")
+  auditEntries       AuditLog[] @relation("AuditPerformer")
+}
+
+model Operator {
+  id       String       @id @default(uuid())
+  name     String
+  role     OperatorRole
+  language String       @default("en")
+  active   Boolean      @default(true)
+
+  headsets Headset[]
+  actions  Action[]
+}
+
+model Headset {
+  id           String           @id @default(uuid())
+  operator     Operator?        @relation(fields: [operatorId], references: [id], onDelete: SetNull)
+  operatorId   String?
+  deviceModel  String
+  serialNumber String           @unique
+  batteryLevel Int              @default(100)
+  status       HeadsetStatus    @default(offline)
+  link         ConnectivityLink @default(offline)
+  rssi         Int?
+  lastSeenAt   DateTime?
+
+  actions Action[]
+}
+
+model Container {
+  id              String          @id @default(uuid())
+  isoCode         String          @unique
+  bleBeaconId     String?         @unique
+  status          ContainerStatus @default(empty)
+  locationLat     Decimal?        @db.Decimal(10, 7)
+  locationLng     Decimal?        @db.Decimal(10, 7)
+  cargoType       String?
+  lastInspectedAt DateTime?
+
+  readings SensorReading[]
+  actions  Action[]
+  alerts   Alert[]
+
+  @@index([status])
+}
+
+model SensorReading {
+  id          String     @id @default(uuid())
+  container   Container  @relation(fields: [containerId], references: [id], onDelete: Cascade)
+  containerId String
+  sensorType  SensorType
+  value       Json
+  recordedAt  DateTime   @default(now())
+
+  @@index([containerId, recordedAt(sort: Desc)])
+  @@index([sensorType, recordedAt(sort: Desc)])
+}
+
+model Action {
+  id          String     @id @default(uuid())
+  container   Container  @relation(fields: [containerId], references: [id], onDelete: Cascade)
+  containerId String
+  operator    Operator   @relation(fields: [operatorId], references: [id])
+  operatorId  String
+  headset     Headset?   @relation(fields: [headsetId], references: [id], onDelete: SetNull)
+  headsetId   String?
+  actionType  ActionType
+  payload     Json       @default("{}")
+  createdAt   DateTime   @default(now())
+
+  @@index([createdAt(sort: Desc)])
+  @@index([operatorId, createdAt(sort: Desc)])
+}
+
+model Alert {
+  id               String        @id @default(uuid())
+  container        Container     @relation(fields: [containerId], references: [id], onDelete: Cascade)
+  containerId      String
+  severity         AlertSeverity
+  message          String
+  acknowledged     Boolean       @default(false)
+  acknowledger     User?         @relation("AlertAck", fields: [acknowledgedBy], references: [id])
+  acknowledgedBy   String?
+  createdAt        DateTime      @default(now())
+
+  @@index([acknowledged, severity, createdAt(sort: Desc)])
+}
+
+model AuditLog {
+  id          BigInt      @id @default(autoincrement())
+  tableName   String
+  recordId    String?
+  action      AuditAction
+  oldData     Json?
+  newData     Json?
+  performer   User?       @relation("AuditPerformer", fields: [performedBy], references: [id])
+  performedBy String?
+  performedAt DateTime    @default(now())
+
+  @@index([tableName, performedAt(sort: Desc)])
+}
