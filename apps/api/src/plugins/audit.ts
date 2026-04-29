@@ -22,11 +22,13 @@ type MiddlewareNext = (params: MiddlewareParams) => Promise<unknown>;
 export function registerAuditMiddleware(): void {
   // prisma.$use is the legacy middleware API; cast through unknown to keep
   // typing local since newer @prisma/client may drop it from the public surface.
-  const usePrisma = (prisma as unknown as {
+  // Must be called as a method on prisma — extracting the reference loses
+  // `this` and Prisma's runtime then trips on `this._middlewares`.
+  const client = prisma as unknown as {
     $use: (fn: (p: MiddlewareParams, n: MiddlewareNext) => Promise<unknown>) => void;
-  }).$use;
+  };
 
-  usePrisma(async (params, next) => {
+  client.$use(async (params, next) => {
     const modelName = params.model;
     if (!modelName || !TRACKED_MODELS.has(modelName) || !TRACKED_OPS.has(params.action)) {
       return next(params);
